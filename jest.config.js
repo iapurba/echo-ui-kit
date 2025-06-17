@@ -3,7 +3,7 @@ module.exports = {
   setupFilesAfterEnv: ["<rootDir>/jest-setup.js"],
   transform: {
     "\\.(js|jsx)$": "babel-jest",
-    "\\.css$": "babel-transform-stub",
+    "\\.css$": "jest-transform-stub",
   },
   moduleNameMapper: {
     "\\.(css|less)$": "jest-transform-stub",
