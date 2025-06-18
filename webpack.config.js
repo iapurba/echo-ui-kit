@@ -1,16 +1,16 @@
 const path = require("path");
 
-module.exports = {
+module.exports =  {
   mode: "production",
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "index.js",
     clean: true,
-  },
-  library: {
-    name: "EchoUIKit",
-    type: "umd",
+    library: {
+      name: "EchoUIKit",
+      type: "umd",
+    },
   },
   externals: {
     react: "react",
@@ -19,7 +19,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
         use: "babel-loader",
       },
@@ -28,5 +28,13 @@ module.exports = {
         use: ["style-loader", "css-loader", "postcss-loader"],
       },
     ],
+  },
+  resolve: {
+    extensions: [".js", ".jsx", ".css"],
+    byDependency: {
+    esm: {
+      fullySpecified: false,
+    },
+  },
   },
 };
