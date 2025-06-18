@@ -1,6 +1,6 @@
 {
   "name": "@iapurba/echo-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A lightweight and accessible React component library styled with Tailwind CSS.",
   "author": "Apurba Panja",
   "license": "MIT",
@@ -30,6 +30,7 @@
     "@storybook/addon-webpack5-compiler-swc": "^3.0.0",
     "@storybook/addons": "^7.6.17",
     "@storybook/react-webpack5": "^9.0.11",
+    "@storybook/testing-library": "^0.2.1",
     "@tailwindcss/postcss": "^4.1.10",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
