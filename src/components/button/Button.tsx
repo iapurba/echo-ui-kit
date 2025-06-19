@@ -6,7 +6,12 @@ const variants = {
   secondary: "bg-gray-300 text-black hover:bg-gray-400",
 };
 
-const Button = ({ children, variant = "primary", ...props }) => {
+export type ButtonProps = {
+  children: React.ReactNode;
+  variant?: "primary" | "secondary";
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+const Button: React.FC<ButtonProps> = ({ children, variant = "primary", ...props }) => {
   return (
     <button className={`${base} ${variants[variant]}`} {...props}>
       {children}
