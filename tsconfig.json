@@ -1,37 +1,46 @@
 {
   "compilerOptions": {
-    /* Basic Options */
-    "target": "ESNext", // Compile down to ES5 for broad browser compatibility.
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ], // Standard libraries to include.
-    "jsx": "react-jsx", // Use the new JSX transform.
-    /* Strict Type-Checking Options */
-    "strict": true, // Enable all strict type-checking options.
-    /* Module Resolution Options */
-    "module": "esnext", // Let a bundler like Webpack handle the final module format.
-    "moduleResolution": "node", // How TS looks for modules. 'node' is the standard.
+    /* === Base & Paths === */
+    "baseUrl": "./src",                           // Root path for module resolution
+    "paths": {
+      "@/*": ["*"]                                // Allows `@/components/Button`
+    },
+
+    /* === Output & Build === */
+    "outDir": "dist",                             // Where compiled files go
+    "declaration": true,                          // Generate .d.ts files
+    "declarationDir": "dist",                     // Put them in dist/
+    "emitDeclarationOnly": false,                 // Full output during dev (set to true in tsconfig.build.json)
+    "noEmit": false,
+
+    /* === Module & Target === */
+    "target": "ESNext",                           // Latest features
+    "module": "ESNext",                           // Let bundler handle modules
+    "moduleResolution": "node",                   // Standard resolution
+
+    /* === React & JSX === */
+    "jsx": "react-jsx",                           // New JSX transform (React 17+)
+
+    /* === Language & Compatibility === */
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "esModuleInterop": true,                      // Support for commonjs modules
+    "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true, // Allows `import React from 'react'`.
-    "esModuleInterop": true, // Improves compatibility between CommonJS and ES Modules.
-    /* Library-Specific Options */
+
+    /* === Type Checking & Strictness === */
+    "strict": true,
     "skipLibCheck": true,
-    "isolatedModules": true,
-    "declaration": true, // CRITICAL: Generates corresponding '.d.ts' declaration files.
-    "declarationDir": "dist", // Place the generated .d.ts files in the 'dist' folder.
-    "outDir": "dist",
-    // "emitDeclarationOnly": true, // IMPORTANT: We only want `tsc` to create type files. Babel will handle the JS.
+    "isolatedModules": true                       // Required for tools like Babel or SWC
   },
-  "include": [
-    "src"
-  ], // Which files to include for compilation.
+
+  "include": ["src"],
   "exclude": [
     "node_modules",
     "dist",
-    "src/**/*.stories.tsx",
-    "src/**/*.test.tsx",
-    "**/*.mdx"
-  ] // Which files to ignore.
+    "**/*.test.*",
+    "**/*.stories.*",
+    "**/*.spec.*",
+    "**/*.mdx",
+    ".storybook"
+  ]
 }

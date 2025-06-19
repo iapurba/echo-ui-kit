@@ -1,5 +1,9 @@
 const path = require("path");
 
+/**
+ * @type {import('webpack').Configuration}
+ */
+
 module.exports = {
   mode: "production",
   devtool: "source-map",
@@ -36,6 +40,9 @@ module.exports = {
     ],
   },
   resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "src"), // ⬅️ this makes @/ work
+    },
     extensions: [".ts", ".tsx", ".js", ".jsx", ".css"],
     byDependency: {
       esm: {
