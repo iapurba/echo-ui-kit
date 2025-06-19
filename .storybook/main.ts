@@ -1,8 +1,8 @@
 
-const path = require("path");
+import type { StorybookConfig } from "@storybook/react-webpack5";
+import path from "path";
 
-/** @type { import('@storybook/react-webpack5').StorybookConfig } */
-const config = {
+const config: StorybookConfig = {
   "stories": [
     "../src/**/*.mdx",
     "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
@@ -30,12 +30,12 @@ const config = {
   },
   webpackFinal: async (config) => {
     // Remove existing css rule to prevent double-processing
-    config.module.rules = config.module.rules.filter(
-      rule => !(rule.test && rule.test.toString().includes('css'))
-    );
+    config.module!.rules = config.module!.rules!.filter((rule): rule is { test: RegExp } => {
+      return typeof rule === "object" && rule !== null && "test" in rule;
+    }).filter(rule => !rule.test.toString().includes("css"));
 
     // Add your PostCSS + Tailwind loader
-    config.module.rules.push({
+    config.module!.rules!.push({
       test: /\.css$/,
       use: [
         'style-loader',
@@ -58,4 +58,5 @@ const config = {
     return config;
   },
 };
+
 export default config;

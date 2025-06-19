@@ -1,9 +1,9 @@
 const path = require("path");
 
-module.exports =  {
+module.exports = {
   mode: "production",
-  devtool: 'inline-source-map',
-  entry: "./src/index.js",
+  devtool: "source-map",
+  entry: "./src/index.ts",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "index.js",
@@ -20,6 +20,11 @@ module.exports =  {
   module: {
     rules: [
       {
+        test: /\.tsx?$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
+      },
+      {
         test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
         use: "babel-loader",
@@ -31,11 +36,11 @@ module.exports =  {
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx", ".css"],
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".css"],
     byDependency: {
-    esm: {
-      fullySpecified: false,
+      esm: {
+        fullySpecified: false,
+      },
     },
-  },
   },
 };

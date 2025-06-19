@@ -1,7 +1,7 @@
 import "../src/index.css";
+import type { Preview } from "@storybook/react";
 
-/** @type { import('@storybook/react-webpack5').Preview } */
-const preview = {
+const preview: Preview = {
   parameters: {
     controls: {
       matchers: {

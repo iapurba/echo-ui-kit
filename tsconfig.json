@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "target": "ESNext", // Compile down to ES5 for broad browser compatibility.
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ], // Standard libraries to include.
+    "jsx": "react-jsx", // Use the new JSX transform.
+    /* Strict Type-Checking Options */
+    "strict": true, // Enable all strict type-checking options.
+    /* Module Resolution Options */
+    "module": "esnext", // Let a bundler like Webpack handle the final module format.
+    "moduleResolution": "node", // How TS looks for modules. 'node' is the standard.
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true, // Allows `import React from 'react'`.
+    "esModuleInterop": true, // Improves compatibility between CommonJS and ES Modules.
+    /* Library-Specific Options */
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "declaration": true, // CRITICAL: Generates corresponding '.d.ts' declaration files.
+    "declarationDir": "dist", // Place the generated .d.ts files in the 'dist' folder.
+    "outDir": "dist",
+    // "emitDeclarationOnly": true, // IMPORTANT: We only want `tsc` to create type files. Babel will handle the JS.
+  },
+  "include": [
+    "src"
+  ], // Which files to include for compilation.
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/**/*.stories.tsx",
+    "src/**/*.test.tsx",
+    "**/*.mdx"
+  ] // Which files to ignore.
+}
